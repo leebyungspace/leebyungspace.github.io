@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // For navigation
-import leeImage from '../assets/lee7.jpg'; // Use import-based image for Vite compatibility
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; 
+import leeImage from '../assets/lee7.jpg'; 
+import ScrollReveal from 'scrollreveal';
 
 const FanCard = () => {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ const FanCard = () => {
     firstName: '',
     lastName: '',
     email: '',
+    membershipType: '',
   });
 
   const [errors, setErrors] = useState({});
@@ -32,21 +34,34 @@ const FanCard = () => {
     if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
     if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
     if (!formData.email.trim()) newErrors.email = 'Email is required';
+    if (!formData.membershipType) newErrors.membershipType = 'Please select a membership type';
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
       console.log('Form submitted:', formData);
-      setFormData({ firstName: '', lastName: '', email: '' });
+      setFormData({ firstName: '', lastName: '', email: '', membershipType: '' });
 
       navigate('/cardpage');
     }
   };
 
+  useEffect(() => {
+    // Initialize ScrollReveal with desired settings
+    ScrollReveal().reveal('.reveal', {
+      distance: '50px',
+      duration: 1000,
+      easing: 'ease-out',
+      opacity: 0,
+      scale: 0.9,
+      interval: 200,
+    });
+  }, []);
+
   return (
     <section className="p-8 min-h-screen">
       {/* Responsive Image */}
-      <div className="mb-6">
+      <div className="mb-6 reveal">
         <img 
           src={leeImage} 
           alt="Lee Byung Hun Fan Club" 
@@ -54,23 +69,31 @@ const FanCard = () => {
         />
       </div>
 
-      <h2 className="text-3xl font-bold mb-4">Fan Card Membership</h2>
-      <p className="mb-6">
+      <h2 className="text-3xl font-bold mb-4 reveal">Fan Card Membership</h2>
+      <p className="mb-6 reveal">
         Join the exclusive fan card membership program for behind-the-scenes content, early event access, and more!
       </p>
 
       {/* Membership Type Selector */}
-      <div className="mb-6">
+      <div className="mb-6 reveal">
         <p className="mb-2 font-medium">Choose your type of membership</p>
-        <select name="membership" className="bg-black text-white w-full sm:w-80 border rounded-2xl p-4">
-          <option value="">Regular Membership Card - $650</option>
-          <option value="">VIP Membership Card - $1,000</option>
-          <option value="">VVIP Membership Card - $1,500</option>
+        <select
+          id="membershipType"
+          name="membership"
+          value={formData.membershipType}
+          onChange={handleChange}
+          className={`bg-black text-white w-full sm:w-80 border rounded-2xl p-4 ${errors.membershipType ? 'border-red-500' : 'border-gray-300'}`}
+        >
+          <option value="">Select Membership Type</option>
+          <option value="regular">Regular Membership Card - $650</option>
+          <option value="vip">VIP Membership Card - $1,000</option>
+          <option value="vvip">VVIP Membership Card - $1,500</option>
         </select>
+        {errors.membershipType && <span className="text-sm text-red-500 mt-1">{errors.membershipType}</span>}
       </div>
 
       {/* Form */}
-      <div className="max-w-xl p-6 bg-black rounded-lg shadow-md">
+      <div className="max-w-xl p-6 bg-black rounded-lg shadow-md reveal">
         <form className="grid grid-cols-1 sm:grid-cols-2 gap-4" onSubmit={handleSubmit}>
           {/* First Name */}
           <div className="flex flex-col">
@@ -115,7 +138,7 @@ const FanCard = () => {
           </div>
 
           {/* Submit Button */}
-          <div className="sm:col-span-2 mt-4">
+          <div className="sm:col-span-2 mt-4 reveal">
             <button
               type="submit"
               className="w-full border hover:bg-gray-700 text-white font-semibold py-2 rounded-full transition duration-200"

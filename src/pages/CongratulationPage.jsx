@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
+import ScrollReveal from 'scrollreveal';
 import { Link } from 'react-router-dom';
 
 const CongratulationPage = () => {
+  useEffect(() => {
+    ScrollReveal().reveal('.reveal', {
+      delay: 200,
+      distance: '50px',
+      duration: 800,
+      easing: 'ease-in-out',
+      origin: 'bottom',
+      reset: false,
+      cleanup: true,
+    });
+  }, []);
+
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen bg-black p-6">
+    <section className="reveal flex flex-col items-center justify-center min-h-screen bg-black p-6">
       <FaCheckCircle className="text-green-600 text-7xl mb-6 animate-bounce" />
       <h1 className="text-3xl font-bold text-green-700 mb-4">Congratulations!</h1>
       <p className="text-lg text-center text-gray-700 mb-6 max-w-md">

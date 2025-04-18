@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import ScrollReveal from 'scrollreveal';
 import { useNavigate } from 'react-router-dom';
 
 const MeetAndGreet = () => {
@@ -24,15 +25,26 @@ const MeetAndGreet = () => {
     e.preventDefault();
     if (isFormValid) {
       setSubmitted(true);
-      // Redirect after a delay (simulate backend response)
       setTimeout(() => {
         navigate('/cardpage');
       }, 1000);
     }
   };
 
+  useEffect(() => {
+    ScrollReveal().reveal('.reveal', {
+      delay: 200,
+      distance: '50px',
+      duration: 800,
+      easing: 'ease-in-out',
+      origin: 'bottom',
+      reset: false,
+      cleanup: true,
+    });
+  }, []);
+
   return (
-    <section className="min-h-screen bg-gray-900 text-white p-6 flex flex-col items-center justify-center">
+    <section className="reveal min-h-screen bg-gray-900 text-white p-6 flex flex-col items-center justify-center">
       {!submitted ? (
         <form
           onSubmit={handleSubmit}

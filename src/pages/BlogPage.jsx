@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import ScrollReveal from 'scrollreveal';
 
 const blogPosts = Array.from({ length: 20 }, (_, i) => ({
   title: `Exclusive Story ${i + 1}`,
@@ -9,12 +10,28 @@ const blogPosts = Array.from({ length: 20 }, (_, i) => ({
 }));
 
 const Blog = () => {
+  useEffect(() => {
+    ScrollReveal().reveal('.blog-post', {
+      delay: 300,
+      distance: '50px',
+      duration: 800,
+      easing: 'ease-in-out',
+      origin: 'bottom',
+      interval: 200,
+      reset: false,
+      cleanup: true,
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-900 text-white py-12 px-4">
       <h1 className="text-4xl font-bold text-center mb-8">Blog</h1>
       <div className="grid gap-8 max-w-6xl mx-auto">
         {blogPosts.map((post, index) => (
-          <div key={index} className="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <div
+            key={index}
+            className="blog-post bg-gray-800 rounded-lg shadow-lg overflow-hidden"
+          >
             <img src={post.image} alt={post.title} className="w-full h-64 object-cover" />
             <div className="p-6">
               <h2 className="text-2xl font-bold mb-2">{post.title}</h2>

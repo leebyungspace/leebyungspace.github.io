@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import leeImage from '../assets/lee7.jpg';
 import { FiUploadCloud } from "react-icons/fi";
+import ScrollReveal from 'scrollreveal';
 import { Link } from 'react-router-dom'; // Make sure you're using react-router-dom
 
 const CardPage = () => {
@@ -20,8 +21,20 @@ const CardPage = () => {
     }
   };
 
+  useEffect(() => {
+    ScrollReveal().reveal('.reveal', {
+      delay: 200,
+      distance: '50px',
+      duration: 800,
+      easing: 'ease-in-out',
+      origin: 'bottom',
+      reset: false,
+      cleanup: true,
+    });
+  }, []);
+
   return (
-    <section className="p-6 max-w-2xl rounded-lg mx-auto shadow-md">
+    <section className="reveal p-6 max-w-2xl rounded-lg mx-auto shadow-md">
       {/* Image */}
       <div className="mb-6">
         <img

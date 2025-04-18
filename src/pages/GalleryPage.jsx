@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import ScrollReveal from 'scrollreveal';
 
 // Dynamically importing images using Vite's new URL system
 const images = [
@@ -24,8 +25,20 @@ const images = [
 ];
 
 const Gallery = () => {
+  useEffect(() => {
+    ScrollReveal().reveal('.reveal', {
+      delay: 200,
+      distance: '50px',
+      duration: 800,
+      easing: 'ease-in-out',
+      origin: 'bottom',
+      reset: false,
+      cleanup: true,
+    });
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gray-900 text-white py-12 px-4">
+    <div className="reveal min-h-screen bg-gray-900 text-white py-12 px-4">
       <h1 className="text-4xl font-bold text-center mb-8">Gallery</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
         {images.map((src, index) => (

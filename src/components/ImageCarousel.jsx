@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
-const images = [
-  "src/assets/lee1.jpg",
-  "src/assets/lee2.jpg",
-  "src/assets/lee3.jpg",
-  "src/assets/lee4.jpg",
-  "src/assets/lee5.jpg",
-  "src/assets/lee6.jpg",
-];
+// ✅ Import images instead of using string paths
+import lee1 from '../assets/lee1.jpg';
+import lee2 from '../assets/lee2.jpg';
+import lee3 from '../assets/lee3.jpg';
+import lee4 from '../assets/lee4.jpg';
+import lee5 from '../assets/lee5.jpg';
+import lee6 from '../assets/lee6.jpg';
+
+const images = [lee1, lee2, lee3, lee4, lee5, lee6];
 
 const ImageCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -30,7 +31,7 @@ const ImageCarousel = () => {
       {/* Image */}
       <img
         src={images[currentIndex]}
-        alt={`Slide ${currentIndex}`}
+        alt={`Slide ${currentIndex + 1}`}
         className="w-full h-auto rounded-xl object-cover transition duration-500"
       />
 
