@@ -11,6 +11,9 @@ import CongratulationPage from './pages/CongratulationPage';
 import MeetAndGreet from './pages/MeetAndGreet';
 import BlogPage from './pages/BlogPage';
 import GalleryPage from './pages/GalleryPage';
+import ShopPage from './pages/ShopPage';
+import CheckoutPage from './pages/CheckOutPage';
+import AddressRequest from './pages/AddressRequest';
 
 function App() {
 
@@ -29,6 +32,9 @@ function App() {
             <Route path="/meetandgreet" element={<MeetAndGreet />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/shop" element={<ShopPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/addressrequest" element={<AddressRequest />} />
           </Routes>
       </Router>
     );

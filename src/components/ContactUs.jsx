@@ -19,12 +19,12 @@ const ContactUs = () => {
     const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        access_key: '',
+        access_key: '670bd432-0b89-4477-8d8e-02d3831109fc', 
         ...formData,
-      })
+      }),
     });
 
     if (res.ok) {
@@ -85,6 +85,6 @@ const ContactUs = () => {
       </ScrollRevealWrapper>
     </>
   );
-}
+};
 
 export default ContactUs;

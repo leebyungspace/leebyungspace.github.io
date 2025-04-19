@@ -45,7 +45,7 @@ const MeetAndGreet = () => {
 
   return (
     <section className="reveal min-h-screen bg-gray-900 text-white p-6 flex flex-col items-center justify-center">
-      {!submitted ? (
+      {!submitted && (
         <form
           onSubmit={handleSubmit}
           className="bg-gray-800 p-8 rounded-2xl shadow-lg w-full max-w-md"
@@ -107,13 +107,6 @@ const MeetAndGreet = () => {
             Proceed to Pay $4,000
           </button>
         </form>
-      ) : (
-        <div className="bg-black p-8 rounded-xl shadow-lg text-center">
-          <h2 className="text-2xl font-bold text-green-400 mb-4">Reservation Submitted!</h2>
-          <p className="mb-2">Thank you, {formData.fullName}!</p>
-          <p className="mb-2">An email has been sent to <strong>{formData.email}</strong> with payment instructions.</p>
-          <p className="text-sm text-gray-400">We'll contact you shortly about the event details.</p>
-        </div>
       )}
     </section>
   );

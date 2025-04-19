@@ -1,21 +1,19 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import ScrollReveal from 'scrollreveal';
 
 const ScrollRevealWrapper = ({ children }) => {
   useEffect(() => {
     ScrollReveal().reveal('.reveal', {
-      origin: 'bottom',
-      distance: '20px',
+      // Define your scroll reveal options here
+      distance: '50px',
       duration: 1000,
-      delay: 200,
-      reset: true,
       easing: 'ease-in-out',
-      opacity: 0,
-      cleanup: true,
+      origin: 'bottom',
+      interval: 100,
     });
   }, []);
 
-  return <>{children}</>;
+  return <div className="reveal">{children}</div>;
 };
 
 export default ScrollRevealWrapper;

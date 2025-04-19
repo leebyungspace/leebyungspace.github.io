@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 
 const HomePage = () => {
   const [showComingSoon, setShowComingSoon] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false); // signup modal toggle
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -19,13 +20,14 @@ const HomePage = () => {
         opacity: 0,
         cleanup: true,
       });
-    }, 100); // slight delay for DOM to mount
-
+    }, 100);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center text-white">
+      {showSignUp && <SignUpForm onClose={() => setShowSignUp(false)} />}
+
       <div className="w-full max-w-4xl mb-8 reveal">
         <ImageCarousel />
       </div>
@@ -102,7 +104,13 @@ const HomePage = () => {
         )}
       </section>
 
-      {/* Footer */}
+      <Link
+        to="/shop"
+        className="fixed bottom-6 right-6 z-40 bg-red-600 hover:bg-blue-700 text-white font-bold rounded-3xl shadow-lg transition duration-300 p-6"
+      >
+        Shop Now
+      </Link>
+
       <Footer />
     </div>
   );
