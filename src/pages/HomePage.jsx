@@ -5,32 +5,264 @@ import ImageCarousel from '../components/ImageCarousel';
 import Footer from '../components/Footer';
 
 const HomePage = () => {
-  const [showComingSoon, setShowComingSoon] = useState(false);
-  const [showSignUp, setShowSignUp] = useState(false); // signup modal toggle
+  const [showTourInfo, setShowTourInfo] = useState(false);
+  const [showAnnouncement, setShowAnnouncement] = useState(true);
+
+  const [showMessage, setShowMessage] = useState(false);
+
+  const handleClick = () => {
+    setShowMessage(true);
+  };
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
       ScrollReveal().reveal('.reveal', {
         origin: 'bottom',
         distance: '20px',
-        duration: 1000,
+        
         delay: 200,
         reset: true,
         easing: 'ease-in-out',
-        opacity: 0,
-        cleanup: true,
       });
-    }, 100);
-    return () => clearTimeout(timer);
+    }, 1000);
   }, []);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center text-white">
-      {showSignUp && <SignUpForm onClose={() => setShowSignUp(false)} />}
+      {showAnnouncement && (
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black px-6 py-3 rounded-full shadow-lg z-50 animate-bounce flex flex-col">
+          <p>🎉 New merchandise just dropped!</p>
+          <span>[Merch, Auctions, Books & More], Go to shop now!!</span>
+          <span>Happy shopping! 🛍️</span>
+        </div>
+      )}
 
       <div className="w-full max-w-4xl mb-8 reveal">
         <ImageCarousel />
       </div>
+
+      <article className="reveal bg-red-900 text-white py-12 px-6 rounded-2xl m-4 shadow-lg max-w-4xl text-center">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4 border-b-4 border-yellow-400 inline-block pb-2">
+          🦑 Squid Game Movie Tour Coming Soon!
+        </h2>
+        <div className='flex flex-col'>
+          <p className="mb-4 text-lg sm:text-xl">
+            Get ready, fans! A special
+          </p>
+
+          <div className='flex justify-center mb-4'>
+            <strong className='text-2xl text-black rounded-3xl border-transparent w-60 bg-white p-2'>Squid Game Movie Tour</strong>
+          </div>
+
+          <p className='mb-4'>is launching soon, and it's going global!</p>
+        </div>
+        <div className='flex flex-col'>
+          <div className='flex justify-center'>
+            <p className="mb-4 border-transparent text-xl rounded-3xl w-60 p-4 font-bold bg-black">
+              Eligible Continents 🌍
+            </p>
+          </div>
+          <span className='font-bold text-2xl mb-4 border-transparent'>Asia</span>
+          <span className='font-bold text-2xl mb-4 border-transparent'>Europe</span>
+          <span className='font-bold text-2xl mb-4 border-transparent'>North America</span>
+          <span className='font-bold text-2xl mb-4 border-transparent'>South America</span>
+        </div>
+
+        <div className='mb-4 border-transparent text-xl rounded-3xl p-4 font-bold bg-black'>
+          <p className="mb-4">
+            Tour Dates 📅
+          </p>
+          <span>Scheduled between <strong>May till July</strong>. Stay tuned for the official itinerary and ticket releases!</span>
+          <p className="mb-6 text-sm italic underline mt-4">
+            Don't miss your chance to be part of this once-in-a-lifetime experience.
+          </p>
+        </div >
+
+
+        <button
+          onClick={() => setShowTourInfo(true)}
+          className="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-full transition duration-300"
+        >
+          Learn More
+        </button>
+
+        {showTourInfo && (
+          <div className="mt-4 bg-yellow-100 text-yellow-900 flex justify-center px-4 py-3 rounded-lg shadow-lg max-w-xl text-center">
+            🎉 Tour info is coming soon to you! Stay tuned for updates!
+            <button
+              onClick={() => setShowTourInfo(false)}
+              className="ml-4 text-sm bg-black text-white px-3 py-1 rounded-full hover:bg-gray-800 transition"
+            >
+              Close
+            </button>
+          </div>
+        )}
+      </article>
+
+      {/* Wildfire Incident Article */}
+      <section className="reveal bg-white text-white py-12 px-6 rounded-2xl m-4 shadow-lg max-w-4xl">
+        <h2 className="text-4xl text-black font-bold mb-6 border-b-4 border-yellow-400 inline-block pb-2">
+          South Korea Wildfire Tragedy
+        </h2>
+
+        <p className="mb-2 text-lg text-black">
+          Since March 21, 2025, South Korea has experienced a severe wildfire outbreak involving more than 20
+          separate blazes occurring simultaneously across the country. The disaster has so far killed 32 people,
+          including three firefighters and one government employee, and has led to the displacement of more than
+          37,000 people. The first significant fire occurred in Sancheong County, followed by the now most significant
+          fire in Uiseong County, prompting widespread evacuations and mobilizing extensive firefighting resources.
+          In response to the emergency, several provinces were officially designated as disaster zones by the national government.
+          <br />The wildfires have been deemed the worst in South Korea's history by acting president <strong>Han Duck-soo</strong>.
+        </p>
+
+
+        <p className="mb-6 text-lg text-black">
+          The Sancheong County fire began on March 21, 2025, and by the evening of March 22 had consumed approximately 1,200 acres (490 ha) of land.
+          The mountainous topography combined with strong winds and dry conditions significantly hampered containment efforts, with firefighters
+          achieving only 35% containment despite substantial deployment of resources for combating the wildfire after earlier reaching 70% containment.
+          Fires in North Gyeongsang Province burned approximately 740 acres (300 ha), while Gimhae experienced additional significant fires requiring
+          evacuations. A wildfire broke out in Ulsan, Ulju County.
+
+          <br />Additional wildfire incidents were reported across central Chungcheong Province and southwestern
+          Jeolla Province, indicating the nationwide scope of the emergency.
+
+          <br />Additional wildfires that broke out simultaneously have affected multiple regions throughout
+          central and southern South Korea. The Korea Forest Service issued its highest-level "severe" fire
+          warnings for 12 locations, including Daejeon, Busan, and the North and South Gyeongsang Provinces.
+          The alert was later issued for the whole country.
+        </p>
+
+        <article class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+          <div class="border border-red-500 rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 bg-white text-black">
+            <h3 class="text-2xl font-bold mb-2 text-red-700">March 23</h3>
+            <p>At 4:03 pm, a fire broke out on Mokdo Island, Ulju-gun, Ulsan Metropolitan City, and was extinguished after 1 hour and 50 minutes.</p>
+          </div>
+
+          <div class="border border-red-500 rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 bg-white text-black">
+            <h3 class="text-2xl font-bold mb-2 text-red-700">March 24</h3>
+            <p>At 3 pm, the Seosan–Yeongdeok Expressway Jeomgok Rest Stop for the Yeongdeok direction was damaged by a forest fire. Prime Minister Han Duck-soo visited the Forest Fire Integrated Command Center and inspected the response situation.</p>
+          </div>
+
+          <div class="border border-red-500 rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 bg-white text-black">
+            <h3 class="text-2xl font-bold mb-2 text-red-700">March 25</h3>
+            <p>The National Fire Agency raised its fire response level to the highest. Gounsa temple in Uiseong, dating from the Silla Dynasty, was destroyed after evacuating treasures. Over 15,000 hectares were burned by this day.</p>
+          </div>
+
+          <div class="border border-red-500 rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 bg-white text-black">
+            <h3 class="text-2xl font-bold mb-2 text-red-700">March 26</h3>
+            <p>104 residents stranded at a port were rescued. An S-76 helicopter crashed during firefighting, killing the pilot. Water supplies were cut off in parts of Andong.</p>
+          </div>
+
+          <div class="border border-red-500 rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 bg-white text-black">
+            <h3 class="text-2xl font-bold mb-2 text-red-700">March 27</h3>
+            <p>Rain fell but had little effect. Air quality became hazardous with PM2.5 reaching 557μg/m³ in Andong. Fire approached Andong city limits.</p>
+          </div>
+
+          <div class="border border-red-500 rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 bg-white text-black">
+            <h3 class="text-2xl font-bold mb-2 text-red-700">March 28</h3>
+            <p>Authorities announced full containment of wildfires in North Gyeongsang.</p>
+          </div>
+
+          <div class="border border-red-500 rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 bg-white text-black">
+            <h3 class="text-2xl font-bold mb-2 text-red-700">March 29</h3>
+            <p>Wildfires reignited in the Andong area early in the morning.</p>
+          </div>
+
+          <div class="border border-red-500 rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 bg-white text-black">
+            <h3 class="text-2xl font-bold mb-2 text-red-700">March 30</h3>
+            <p>Authorities again announced full containment of the wildfires in North and South Gyeongsang.</p>
+          </div>
+
+          <div class="border border-red-500 rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 bg-white text-black">
+            <h3 class="text-2xl font-bold mb-2 text-red-700">April 6</h3>
+            <p>A second helicopter crashed while fighting fires in northwestern Daegu, killing its pilot.</p>
+          </div>
+
+          <div class="border border-red-500 rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 bg-white text-black">
+            <h3 class="text-2xl font-bold mb-2 text-red-700">April 7</h3>
+            <p>A wildfire broke out in Hadong County due to a turf cutter accident. Over 506 people evacuated, with 65 hectares affected.</p>
+          </div>
+
+          <div class="border border-red-500 rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 bg-white text-black">
+            <h3 class="text-2xl font-bold mb-2 text-red-700">April 10</h3>
+            <p>A wildfire broke out in the Korean Demilitarized Zone in Goseong County, Gangwon.</p>
+          </div>
+
+          <div class="border border-red-500 rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transform transition duration-300 bg-white text-black">
+            <h3 class="text-2xl font-bold mb-2 text-red-700">April 26</h3>
+            <p>A wildfire broke out near Inje County, Gangwon, in the afternoon.</p>
+          </div>
+        </article>
+
+        <div className="space-y-6">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col justify-center w-full sm:w-auto">
+              <img src="/reporter.jpg" alt="reporter" className="rounded-lg w-full h-auto" />
+            </div>
+            <div className="flex flex-col justify-center w-full sm:w-auto">
+              <p className="mb-4 text-lg text-black">
+                The firefighting operation has involved nearly 1,600 personnel, 35 helicopters,
+                and numerous ground vehicles. Acting President of South Korea Choi Sang-mok directed
+                all relevant government agencies to employ the maximum available resources for fire
+                suppression activities. The national administration formally declared North and South
+                Gyeongsang provinces and Ulsan as disaster zones, enabling additional emergency
+                resources and support measures.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col justify-center w-full sm:w-auto">
+              <img src="/meeting.jpg" alt="meeting" className="rounded-lg w-full h-auto" />
+            </div>
+            <div className="flex flex-col justify-center w-full sm:w-auto mb-6">
+              <p className="mb-4 text-lg text-black">
+                At least 37,829 people were displaced by the incident, which also required
+                residents of 15 communities in the impacted areas to evacuate. This
+                includes the relocation of 500 people in Uiseong County, scores of
+                Gimhae inhabitants, and 260 residents of Sancheong County to temporary
+                shelters after flames damaged their homes on the nearby hillsides.
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+        <p className="mb-4 text-lg text-black">
+          About 80 individuals had to be evacuated due to a wildfire that raged
+          throughout Ulju County in Ulsan. Authorities also shut down a
+          number of highway and railroad segments in the southeast, including
+          a crucial corridor that links Ulsan and Busan, the country's
+          second-largest metropolitan area. Following wildfires that
+          spread from Uiseong to Cheongsong County, authorities also
+          ordered the evacuation of 2,600 prisoners from Cheongsong
+          Prison and 800 prisoners from Andong Prison.
+        </p>
+
+
+        <p className="mb-8 text-lg text-black">
+          As the nation mourns and begins the rebuilding process, your help is needed more than ever.
+          Contributions will directly support the victims, help rebuild communities, and restore the affected natural areas.
+        </p>
+
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-black">
+          <button className="">
+            <Link to="/cardpage">
+              <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-md">
+                Contribute
+              </button>
+            </Link>
+          </button>
+          <Link to="/cardpage">
+            <button className="bg-white hover:bg-gray-100 text-red-700 font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-md">
+              Donate
+            </button>
+          </Link>
+        </div>
+      </section>
+
+
 
       {/* Info Section */}
       <section className="reveal bg-gray-800 text-white py-12 px-6 rounded-2xl m-4 shadow-lg max-w-4xl text-center">
@@ -77,7 +309,7 @@ const HomePage = () => {
       <section className="reveal bg-gray-800 text-white py-12 px-6 rounded-2xl m-4 shadow-lg max-w-4xl text-center">
         <h2 className="text-3xl font-bold mb-4">Lee's Highlights</h2>
         <p className="mb-4">
-          Most times its the reflection of life that keeps us going and moving forward. Also, having taking photos is just a way 
+          Most times its the reflection of life that keeps us going and moving forward. Also, having taking photos is just a way
           of capturing the moment.
         </p>
         <p className="mb-4">
@@ -87,26 +319,26 @@ const HomePage = () => {
 
       {/* Behind the Scenes */}
       <section className="reveal bg-gray-800 text-white py-12 px-6 rounded-2xl m-4 shadow-lg max-w-4xl text-center">
-        <h2 className="text-3xl font-bold mb-4">Behind the Scenes</h2>
+        <h2 className="text-3xl font-bold mb-4">Behind the Scenes | Socials</h2>
         <p className="mb-4">
-          Get a sneak peek into Lee’s training sessions, filming process, and personal reflections shared exclusively with his fan club.
+          Get a sneak peek into Lee's training sessions, filming process, and personal reflections shared exclusively with his fan club.
         </p>
+
         <button
-          onClick={() => setShowComingSoon(true)}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full transition duration-300"
+          onClick={handleClick}
+          className="inline-block mt-4 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition"
         >
-          Read Blog Posts
+          Visit Blog
         </button>
-        {showComingSoon && (
-          <div className="mt-4 bg-yellow-100 text-yellow-800 px-4 py-2 rounded-lg shadow">
-            🚧 Blog Coming Soon – Stay Tuned!
-          </div>
+
+        {showMessage && (
+          <p className="mt-4 text-lg text-white">🚧 Coming Soon...</p>
         )}
       </section>
 
       <Link
-        to="/shop"
-        className="fixed bottom-6 right-6 z-40 bg-red-600 hover:bg-blue-700 text-white font-bold rounded-3xl shadow-lg transition duration-300 p-6"
+        to='/shop'
+        className="fixed bottom-6 right-6 z-40 animate-pulse bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-3xl shadow-lg transition duration-300 p-10"
       >
         Shop Now
       </Link>

@@ -59,13 +59,13 @@ const merchItems = [
   ];
   
   const squidGameMerch = [
-    { id: 200, name: 'Squid Game', price: 350, image: new URL('/sqidgames/squid.jpg', import.meta.url).href, description: 'Limited Squid Games Merch' },
-    { id: 201, name: 'Squid Game', price: 350, image: new URL('/sqidgames/squid2.jpg', import.meta.url).href, description: 'Limited Squid Games Merch' },
-    { id: 202, name: 'Squid Game', price: 350, image: new URL('/sqidgames/squid3.jpg', import.meta.url).href, description: 'Limited Squid Games Merch' },
-    { id: 203, name: 'Squid Game', price: 350, image: new URL('/sqidgames/squid4.jpg', import.meta.url).href, description: 'Limited Squid Games Merch' },
-    { id: 204, name: 'Squid Game', price: 350, image: new URL('/sqidgames/squid5.jpg', import.meta.url).href, description: 'Limited Squid Games Merch' },
-    { id: 205, name: 'Squid Game', price: 350, image: new URL('/sqidgames/squiddice.jpg', import.meta.url).href, description: 'Limited Squid Games Merch' },
-    { id: 206, name: 'Squid Game', price: 350, image: new URL('/sqidgames/squidgame.jpg', import.meta.url).href, description: 'Limited Squid Games Merch' },
+    { id: 200, name: '001, Motion Detector & 230 Portrait', price: 350, image: new URL('/sqidgames/squid.jpg', import.meta.url).href, description: 'Limited Squid Games Merch' },
+    { id: 201, name: 'Squid Game Buttons', price: 350, image: new URL('/sqidgames/squid2.jpg', import.meta.url).href, description: 'Limited Squid Games Merch' },
+    { id: 202, name: 'Players Stickers', price: 350, image: new URL('/sqidgames/squid3.jpg', import.meta.url).href, description: 'Limited Squid Games Merch' },
+    { id: 203, name: 'The FrontMan Bag', price: 350, image: new URL('/sqidgames/squid4.jpg', import.meta.url).href, description: 'Limited Squid Games Merch' },
+    { id: 204, name: 'Player 230 Necklace', price: 350, image: new URL('/sqidgames/squid5.jpg', import.meta.url).href, description: 'Limited Squid Games Merch' },
+    { id: 205, name: 'Squid Game Buttons', price: 350, image: new URL('/sqidgames/squiddice.jpg', import.meta.url).href, description: 'Limited Squid Games Merch' },
+    { id: 206, name: 'Squid Game Busquit Outline', price: 350, image: new URL('/sqidgames/squidgame.jpg', import.meta.url).href, description: 'Limited Squid Games Merch' },
   ];
 
   const bookMerch = [

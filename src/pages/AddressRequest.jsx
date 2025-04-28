@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import ScrollReveal from 'scrollreveal';
 
 const AddressRequest = () => {
   const navigate = useNavigate();
@@ -28,11 +29,37 @@ const AddressRequest = () => {
     }, 1000);
   };
 
+  useEffect(() => {
+    // ScrollReveal animations for the form and message
+    ScrollReveal().reveal(".form-container", {
+      origin: "bottom",
+      distance: "20px",
+      duration: 1000,
+      delay: 200,
+      reset: true,
+      easing: "ease-in-out",
+      opacity: 0,
+    });
+
+    ScrollReveal().reveal(".message", {
+      origin: "bottom",
+      distance: "20px",
+      duration: 1000,
+      delay: 400,
+      reset: true,
+      easing: "ease-in-out",
+      opacity: 0,
+    });
+  }, []);
+
   return (
     <div className="container mx-auto px-4 py-8 text-white">
-      <h2 className="text-3xl font-bold mb-6 text-center">Enter Shipping Address</h2>
+      <h2 className="text-3xl font-bold mb-6 text-center reveal">Enter Shipping Address</h2>
 
-      <form onSubmit={handleSubmit} className="bg-gray-800 p-6 rounded-lg shadow-lg max-w-lg mx-auto">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-gray-800 p-6 rounded-lg shadow-lg max-w-lg mx-auto form-container"
+      >
         <div className="space-y-4">
           <input
             type="text"
@@ -91,7 +118,9 @@ const AddressRequest = () => {
         </button>
       </form>
 
-      {message && <p className="mt-4 text-center text-sm">{message}</p>}
+      {message && (
+        <p className="mt-4 text-center text-sm message">{message}</p>
+      )}
     </div>
   );
 };

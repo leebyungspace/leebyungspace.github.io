@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ScrollReveal from "scrollreveal";
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
@@ -33,12 +34,25 @@ const CheckoutPage = () => {
       0
     );
 
+  // ScrollReveal effect
+  useEffect(() => {
+    ScrollReveal().reveal(".reveal", {
+      origin: "bottom",
+      distance: "30px",
+      duration: 800,
+      delay: 200,
+      reset: true,
+      easing: "ease-in-out",
+      opacity: 0,
+    });
+  }, []);
+
   return (
     <div className="p-4 min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white">
-      <h1 className="text-3xl font-bold text-center mb-8">Your Cart</h1>
+      <h1 className="text-3xl font-bold text-center mb-8 reveal">Your Cart</h1>
 
       {cart.length === 0 ? (
-        <div className="text-center text-gray-400">
+        <div className="text-center text-gray-400 reveal">
           <p>Your cart is empty.</p>
           <button
             onClick={() => navigate("/shop")}
@@ -49,10 +63,11 @@ const CheckoutPage = () => {
         </div>
       ) : (
         <div className="max-w-4xl mx-auto space-y-6">
-          {cart.map((item) => (
+          {cart.map((item, index) => (
             <div
               key={item.key}
-              className="flex items-center bg-gray-800 p-4 rounded-lg shadow-md"
+              className="flex items-center bg-gray-800 p-4 rounded-lg shadow-md reveal"
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
               <img
                 src={item.image}
@@ -94,15 +109,15 @@ const CheckoutPage = () => {
             </div>
           ))}
 
-          <div className="text-right mt-6">
+          <div className="text-right mt-6 reveal">
             <p className="text-xl font-bold mb-4">
               Total: ${getTotal().toFixed(2)}
             </p>
             <button
-              onClick={() => navigate('/addressrequest')}
+              onClick={() => navigate("/addressrequest")}
               className="px-8 py-3 bg-red-600 hover:bg-green-700 text-white rounded-full text-lg"
             >
-             Proceed to Payment
+              Proceed to Payment
             </button>
           </div>
         </div>

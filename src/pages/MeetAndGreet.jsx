@@ -56,7 +56,7 @@ const MeetAndGreet = () => {
 
           <p className="text-sm text-gray-400 mb-6 text-center">
             Reserve your exclusive chance to meet Lee Byung-hun.<br />
-            <span className="text-blue-400 font-semibold">Reservation Fee: $4,000</span>
+            <span className="text-blue-400 font-semibold">Reservation Fee: $1,000</span>
           </p>
 
           <div className="mb-4">
@@ -104,7 +104,7 @@ const MeetAndGreet = () => {
                 : 'bg-gray-500 cursor-not-allowed'
             }`}
           >
-            Proceed to Pay $4,000
+            Proceed to Pay $1,000
           </button>
         </form>
       )}

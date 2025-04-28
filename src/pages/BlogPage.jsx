@@ -1,13 +1,20 @@
 import React, { useEffect } from 'react';
 import ScrollReveal from 'scrollreveal';
 
-const blogPosts = Array.from({ length: 20 }, (_, i) => ({
-  title: `Exclusive Story ${i + 1}`,
-  date: `April ${i + 1}, 2025`,
-  excerpt: `Catch up on Lee Byung-hun's exciting journey in episode ${i + 1}...`,
-  image: `https://source.unsplash.com/random/800x600?sig=${i}`,
-  video: `https://www.youtube.com/embed/dQw4w9WgXcQ`, // Replace with actual video URLs
-}));
+const blogPosts = [
+  {
+    platform: 'Facebook',
+    image: 'https://yourdomain.com/path-to-facebook-image.jpg', // Upload to your assets or use direct image link
+    caption: "Behind the scenes moment during the shoot – raw, real, and powerful.",
+    url: 'https://www.facebook.com/share/r/1EuaMnK6MF/?mibextid=wwXIfr',
+  },
+  {
+    platform: 'Instagram',
+    image: 'https://yourdomain.com/path-to-instagram-image.jpg',
+    caption: "This look speaks volumes 🔥 – From the latest photoshoot.",
+    url: 'https://www.instagram.com/p/DISoE7HpphA/?igsh=MXJ1OWs3YjE2c3l1MQ==',
+  },
+];
 
 const Blog = () => {
   useEffect(() => {
@@ -26,28 +33,25 @@ const Blog = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white py-12 px-4">
       <h1 className="text-4xl font-bold text-center mb-8">Blog</h1>
-      <div className="grid gap-8 max-w-6xl mx-auto">
+      <div className="grid gap-8 max-w-4xl mx-auto">
         {blogPosts.map((post, index) => (
-          <div
+          <a
+            href={post.url}
+            target="_blank"
+            rel="noopener noreferrer"
             key={index}
-            className="blog-post bg-gray-800 rounded-lg shadow-lg overflow-hidden"
+            className="blog-post bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:scale-105 transition transform duration-300"
           >
-            <img src={post.image} alt={post.title} className="w-full h-64 object-cover" />
+            <img
+              src={post.image}
+              alt={post.caption}
+              className="w-full h-72 object-cover"
+            />
             <div className="p-6">
-              <h2 className="text-2xl font-bold mb-2">{post.title}</h2>
-              <p className="text-sm text-gray-400 mb-4">{post.date}</p>
-              <p className="mb-4">{post.excerpt}</p>
-              <div className="aspect-w-16 aspect-h-9">
-                <iframe
-                  src={post.video}
-                  title={post.title}
-                  frameBorder="0"
-                  allowFullScreen
-                  className="w-full h-64 md:h-96"
-                ></iframe>
-              </div>
+              <p className="text-lg font-medium">{post.caption}</p>
+              <p className="text-sm text-gray-400 mt-2">View on {post.platform}</p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
