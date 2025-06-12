@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ScrollReveal from 'scrollreveal';
 import ImageCarousel from '../components/ImageCarousel';
 import Footer from '../components/Footer';
+import { FaArrowAltCircleRight } from 'react-icons/fa';
 
 const HomePage = () => {
   const [showTourInfo, setShowTourInfo] = useState(false);
@@ -32,7 +33,10 @@ const HomePage = () => {
     <div className="min-h-screen flex flex-col items-center justify-center text-white">
       {showAnnouncement && (
         <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black px-6 py-3 rounded-full shadow-lg z-50 animate-bounce flex flex-col">
-          <p>🎉 New merchandise just dropped!</p>
+          <p>🎉 SQUIDGAME SEASON 3 TOUR ON GOING</p>
+          <Link to="/tickets">
+          Click here
+          </Link>
           <span>[Merch, Auctions, Books & More], Go to shop now!!</span>
           <span>Happy shopping! 🛍️</span>
         </div>
@@ -43,19 +47,11 @@ const HomePage = () => {
       </div>
 
       <article className="reveal bg-red-900 text-white py-12 px-6 rounded-2xl m-4 shadow-lg max-w-4xl text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4 border-b-4 border-yellow-400 inline-block pb-2">
-          🦑 Squid Game Movie Tour Coming Soon!
-        </h2>
         <div className='flex flex-col'>
-          <p className="mb-4 text-lg sm:text-xl">
-            Get ready, fans! A special
-          </p>
 
           <div className='flex justify-center mb-4'>
-            <strong className='text-2xl text-black rounded-3xl border-transparent w-60 bg-white p-2'>Squid Game Movie Tour</strong>
+            <strong className='text-2xl text-black rounded-3xl border-transparent w-60 bg-white p-2'>Squid Game Movie Tour OnGoing!</strong>
           </div>
-
-          <p className='mb-4'>is launching soon, and it's going global!</p>
         </div>
         <div className='flex flex-col'>
           <div className='flex justify-center'>
@@ -71,33 +67,26 @@ const HomePage = () => {
 
         <div className='mb-4 border-transparent text-xl rounded-3xl p-4 font-bold bg-black'>
           <p className="mb-4">
-            Tour Dates 📅
+            America and Europe Tour OnGoing
           </p>
-          <span>Scheduled between <strong>May till July</strong>. Stay tuned for the official itinerary and ticket releases!</span>
+          <span>Scheduled between <strong>May till July</strong>As squidgame season 3 in a few weeks time, hurry and get your tickets. Byung Hun is coming to a city near you</span>
           <p className="mb-6 text-sm italic underline mt-4">
-            Don't miss your chance to be part of this once-in-a-lifetime experience.
+            Stay tuned for the official itinerary and ticket releases!
           </p>
         </div >
 
 
-        <button
-          onClick={() => setShowTourInfo(true)}
-          className="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-full transition duration-300"
-        >
-          Learn More
-        </button>
-
-        {showTourInfo && (
-          <div className="mt-4 bg-yellow-100 text-yellow-900 flex justify-center px-4 py-3 rounded-lg shadow-lg max-w-xl text-center">
-            🎉 Tour info is coming soon to you! Stay tuned for updates!
-            <button
-              onClick={() => setShowTourInfo(false)}
-              className="ml-4 text-sm bg-black text-white px-3 py-1 rounded-full hover:bg-gray-800 transition"
-            >
-              Close
+        <div className="flex justify-center items-center mt-6">
+          <Link to="/tourdates">
+            <button className="flex justify-center bg-white hover:bg-gray-100 text-red-700 font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-md">
+              <p className="flex flex-row items-center gap-2 uppercase">
+                Reservation <FaArrowAltCircleRight />
+              </p>
             </button>
-          </div>
-        )}
+          </Link>
+        </div>
+
+
       </article>
 
       {/* Wildfire Incident Article */}
